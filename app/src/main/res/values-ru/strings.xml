@@ -12,9 +12,15 @@
     <string name="difficult_level">Уровень сложности</string>
     <string name="try_again">ПОПРОБУЙ ЕЩЁ РАЗ!</string>
     <string name="start">НАЧАТЬ!</string>
-    <string-array name="difficultyLevels">
-        <item>Легкий</item>
-        <item>Обычный</item>
-        <item>Сложный</item>
-    </string-array>
+    <string name="choose_language">Выберите язык</string>
+<string-array name="difficultyLevels">
+    <item>Легкий</item>
+    <item>Обычный</item>
+    <item>Сложный</item>
+</string-array>
+
+<string-array name="languages">
+    <item>English</item>
+    <item>Русский</item>
+</string-array>
 </resources>

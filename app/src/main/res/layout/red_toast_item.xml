@@ -11,7 +11,7 @@
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:contentDescription="@string/falseanswer"
+        android:contentDescription="@string/falseAnswer"
         app:srcCompat="@drawable/resource_false"
         tools:layout_editor_absoluteX="130dp"
 

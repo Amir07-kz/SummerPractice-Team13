@@ -33,6 +33,11 @@ object AppPreferences {
         set(value) = preferences.edit {
             it.putString("mode", value)
         }
+    var language: String?
+        get() = preferences.getString("lang", "en")
+        set(value) = preferences.edit {
+            it.putString("lang", value)
+        }
     var sliderMusicValue: Float?
         get() = preferences.getFloat("sliderMusicValue", 50.0F)
         set(value) = preferences.edit {
