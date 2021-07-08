@@ -1,6 +1,5 @@
 package summerpractice.team13.guessthedrawing.ui.settings_screen
 
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +10,6 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.textfield.TextInputLayout
 import summerpractice.team13.guessthedrawing.R
 import summerpractice.team13.guessthedrawing.databinding.FragmentSettingsBinding
@@ -23,6 +21,11 @@ import summerpractice.team13.guessthedrawing.utils.LocaleUtils
 
 
 class SettingsFragment : Fragment(), IChangeDifficultyView {
+
+    // TODO: Не переводит hint в textInputLayout
+    // TODO: Не переводит текст в окне с выбором сложности
+    // TODO: Не переводит текст в bottomNavigation
+    // TODO: Подправить и подобрать переводы к каждому слову
 
     private lateinit var ichangeDifficultyPresenter: IChangeDifficultyPresenter
     private lateinit var autoCompleteTextView: AutoCompleteTextView
@@ -52,9 +55,9 @@ class SettingsFragment : Fragment(), IChangeDifficultyView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        context?.let { LocaleUtils.setLocaleLanguage(AppPreferences.language.toString(), it) }
 
         context?.let { AppPreferences.init(it) }
+        context?.let { LocaleUtils.setLocaleLanguage(AppPreferences.languageCode.toString(), it) }
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         ichangeDifficultyPresenter = ChangeDifficultyPresenter(this)
 
@@ -78,25 +81,29 @@ class SettingsFragment : Fragment(), IChangeDifficultyView {
         autoCompleteTextViewLang.setOnItemClickListener { _, _, position, _ ->
 
             if (position == 0) {
-                AppPreferences.language = "en"
-                val l = AppPreferences.language
+                AppPreferences.languageCode = "en"
+                AppPreferences.language = "English"
+                val l = AppPreferences.languageCode
 
                 context?.let {
                     if (l != null) {
                         LocaleUtils.setLocaleLanguage(l, it)
                     }
                 }
+
+                // Refresh screen
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    fragmentManager?.beginTransaction()?.detach(this)?.commit();
-                    fragmentManager?.beginTransaction()?.attach(this)?.commit();
+                    fragmentManager?.beginTransaction()?.detach(this)?.commitAllowingStateLoss();
+                    fragmentManager?.beginTransaction()?.attach(this)?.commitAllowingStateLoss();
                 } else {
                     fragmentManager?.beginTransaction()?.detach(this)?.attach(this)?.commit();
                 }
 
 
             } else if (position == 1) {
-                AppPreferences.language = "ru"
-                val l = AppPreferences.language
+                AppPreferences.language = "Русский"
+                AppPreferences.languageCode = "ru"
+                val l = AppPreferences.languageCode
                 context?.let {
                     if (l != null) {
                         LocaleUtils.setLocaleLanguage(l, it)

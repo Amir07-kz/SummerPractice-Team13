@@ -23,4 +23,5 @@
     <item>English</item>
     <item>Русский</item>
 </string-array>
+    <string name="normal">Обычный</string>
 </resources>

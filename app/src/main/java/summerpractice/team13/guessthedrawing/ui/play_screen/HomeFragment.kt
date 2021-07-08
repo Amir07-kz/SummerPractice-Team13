@@ -38,7 +38,7 @@ class HomeFragment : Fragment(), IAnswerCheckView {
 
         context?.let { AppPreferences.init(it) }
 
-        context?.let { LocaleUtils.setLocaleLanguage(AppPreferences.language.orEmpty(), it) }
+        context?.let { LocaleUtils.setLocaleLanguage(AppPreferences.languageCode.orEmpty(), it) }
         root = inflater.inflate(R.layout.fragment_play, container, false)
 
         // Values

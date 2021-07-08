@@ -157,7 +157,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="none"
-                android:text="@string/normal"
+                android:text="@string/russian"
                 android:textColor="#757575"
                 android:textSize="18sp"
                 tools:ignore="LabelFor">
